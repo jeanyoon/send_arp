@@ -110,10 +110,10 @@ void send_arp(pcap_t *fp, uint8_t* src_MAC, uint8_t* dst_MAC, uint8_t* sender_MA
     else if(request_or_reply == false)
         arp.arp_header.ea_hdr.ar_op = htons(ARPOP_REQUEST);
 
-    memcpy(&arp.arp_header.arp_sha, sender_MAC, 6); //source header address > MAC
-    memcpy(&arp.arp_header.arp_tha, target_MAC, 6); //target header address > Mac
-    memcpy(&arp.arp_header.arp_spa, sender_IP, 4); //source protocol address > IP, We Don't know 'source port address'
-    memcpy(&arp.arp_header.arp_tpa, target_IP, 4); //target protocol address > IP
+    memcpy(&arp.arp_header.arp_sha, sender_MAC, 6); 
+    memcpy(&arp.arp_header.arp_tha, target_MAC, 6); 
+    memcpy(&arp.arp_header.arp_spa, sender_IP, 4); 
+    memcpy(&arp.arp_header.arp_tpa, target_IP, 4); 
 
     u_char arp_send_packet[42];
     memcpy(arp_send_packet, &arp, sizeof(arp));
